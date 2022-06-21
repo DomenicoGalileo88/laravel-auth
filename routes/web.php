@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function (){
-    Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::get('/', 'HomeController@index')->name('admin');
 });
 
 
