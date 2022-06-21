@@ -20,13 +20,13 @@
                 <td scope="row">{{$post->id}}</td>
                 <td>{{$post->title}}</td>
                 <td>{{$post->slug}}</td>
-                <td><img width="150" src="{{$post->cover_image}}" alt="Cover image {{$post->title}}"></td>
+                <td><img width="150" height="75" src="{{$post->cover_image}}" alt="Cover image {{$post->title}}"></td>
                 <td>View - Edit - Delete</td>
             </tr>
 
             @empty
             <tr>
-                <td scope="row">No Posts! Create your first post <a href="#">Create post</a></td>
+                <td scope="row">No Posts!<a href="#">Create post</a></td>
             </tr>
             @endforelse
         </tbody>

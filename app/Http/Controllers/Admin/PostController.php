@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest;
+use Illuminate\Support\Str;
+
 
 class PostController extends Controller
 {
@@ -15,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderByDesc('id')->get();
         //dd($posts);
         return view('admin.posts.index', compact('posts'));
     }
@@ -27,7 +30,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -36,9 +39,19 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        // Validazione dati
+        $val_data = $request->validated();
+        
+        // generare lo slug
+        $slug = Str::slug($request->title, '-');
+        $val_data['slug'] = $slug;
+
+        // create the resource
+        Post::create($val_data);
+        // redirect
+        return redirect()->route('admin.posts.index')->with('message', 'Post creato con successo');
     }
 
     /**
@@ -70,7 +83,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
         //
     }
