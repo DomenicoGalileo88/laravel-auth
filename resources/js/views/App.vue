@@ -1,15 +1,13 @@
 <template>
   <div>
-    <div class="container text-center my-5">
-      <h1>Work in progress</h1>
-      <h2>Sito in costruzione</h2>
-    </div>
+    <WorkInProgress/>
   </div>
 </template>
 
 <script>
+import WorkInProgress from '../components/WorkInProgress';
 export default {
   name: "App",
-  components: {}
+  components: {WorkInProgress}
 }
 </script>

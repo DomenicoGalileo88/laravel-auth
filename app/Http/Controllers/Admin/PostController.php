@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
-use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -42,9 +40,9 @@ class PostController extends Controller
     {
         // Validazione dati
         $val_data = $request->validated();
-        
+
         // generare lo slug
-        $slug = Str::slug($request->title, '-');
+        $slug = Post::slug($request->title); // lo generiamo attraverso una funzione definita nel metodo Post 
         $val_data['slug'] = $slug;
 
         // create the resource
@@ -90,7 +88,7 @@ class PostController extends Controller
         $val_data = $request->validated();
 
         // generare lo slug
-        $slug = Str::slug($request->title, '-');
+        $slug = Post::slug($request->title); // lo generiamo attraverso una funzione definita nel metodo Post
         $val_data['slug'] = $slug;
 
         // create the resource

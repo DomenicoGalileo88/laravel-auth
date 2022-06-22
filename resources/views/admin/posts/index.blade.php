@@ -22,8 +22,8 @@
                 <td>{{$post->slug}}</td>
                 <td><img width="150" height="75" src="{{$post->cover_image}}" alt="Cover image {{$post->title}}"></td>
                 <td>
-                    <a class="btn btn-primary text-white" href="{{route('admin.posts.show', $post->id )}}">View</a>
-                    <a class="btn btn-secondary text-white" href="{{route('admin.posts.edit', $post->id )}}">Edit</a>
+                    <a class="btn btn-primary text-white" href="{{route('admin.posts.show', $post->slug )}}">View</a>
+                    <a class="btn btn-secondary text-white" href="{{route('admin.posts.edit', $post->slug )}}">Edit</a>
 
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#delete-post-{{$post->id}}">
