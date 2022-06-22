@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Str;
 
-
 class PostController extends Controller
 {
     /**
@@ -96,6 +95,8 @@ class PostController extends Controller
 
         // create the resource
         $post->update($val_data);
+
+
         // redirect
         return redirect()->route('admin.posts.index')->with('message', 'Post modificato con successo');
     }
