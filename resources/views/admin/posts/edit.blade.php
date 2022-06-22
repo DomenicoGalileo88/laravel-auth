@@ -2,8 +2,10 @@
 
 @section('content')
 
-<h2>Update {{$post->title}}</h2>
+<h2>Edit {{$post->title}}</h2>
+
 @include('partials.errors')
+
 <form action="{{route('admin.posts.update', $post->id)}}" method="post">
     @csrf
     @method('PUT')
