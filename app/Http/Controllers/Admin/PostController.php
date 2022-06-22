@@ -73,7 +73,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -85,7 +85,19 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        //
+        //dd($request->all());
+
+        // Validazione dati
+        $val_data = $request->validated();
+
+        // generare lo slug
+        $slug = Str::slug($request->title, '-');
+        $val_data['slug'] = $slug;
+
+        // create the resource
+        $post->update($val_data);
+        // redirect
+        return redirect()->route('admin.posts.index')->with('message', 'Post modificato con successo');
     }
 
     /**
