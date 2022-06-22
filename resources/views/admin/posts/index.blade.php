@@ -21,7 +21,11 @@
                 <td>{{$post->title}}</td>
                 <td>{{$post->slug}}</td>
                 <td><img width="150" height="75" src="{{$post->cover_image}}" alt="Cover image {{$post->title}}"></td>
-                <td>View - Edit - Delete</td>
+                <td>
+                    <a class="btn btn-primary text-white" href="route('admin.posts.show', $post->id )">View</a>
+                    Edit
+                    Delete
+                </td>
             </tr>
 
             @empty
